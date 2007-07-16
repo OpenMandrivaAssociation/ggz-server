@@ -1,5 +1,5 @@
 %define version 0.0.14
-%define release %mkrel 3
+%define release %mkrel 4
 
 %define lib_major 6
 %define libname %mklibname ggzdmod %{lib_major}
@@ -101,8 +101,9 @@ exit 1
 autoconf
 
 %build
-%configure2_5x \
---with-libggz-libraries=%{_libdir} \
+%serverbuild
+%configure \
+	--with-libggz-libraries=%{_libdir} \
 %if %enable_mysql
 	--with-database=mysql
 %else
@@ -138,9 +139,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{_libdir}/libggzdmod.so.%{lib_major}
 %{_libdir}/libggzdmod.so.%{lib_major}.*
-%{_libdir}/libggzdmod++.so
 %{_libdir}/libggzdmod++.so.*
-%{_libdir}/libggzdmod.so
 
 %files devel
 %defattr(-,root,root)
@@ -150,6 +149,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libggzdmod++.la
 %{_libdir}/libggzdmod.a
 %{_libdir}/libggzdmod.la
+%{_libdir}/libggzdmod++.so
+%{_libdir}/libggzdmod.so
 
 
 
