@@ -1,5 +1,5 @@
 %define version 0.0.14
-%define release %mkrel 4
+%define release %mkrel 5
 
 %define lib_major 6
 %define libname %mklibname ggzdmod %{lib_major}
@@ -28,7 +28,7 @@ BuildRequires:	mysql-devel
 %if %enable_pgsql
 BuildRequires:	postgresql-devel
 %else
-BuildRequires:	libdb4.5-devel
+BuildRequires:	db4-devel
 %endif
 %endif
 Requires:	libggz = %{version}
