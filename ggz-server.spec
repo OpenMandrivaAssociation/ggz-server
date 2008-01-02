@@ -19,6 +19,7 @@ License:	GPL
 Group:		Games/Other
 Source:		%name-%version.tar.bz2
 URL:		http://www.ggzgamingzone.org/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libggz-devel = %{version}
 BuildRequires:	popt-devel autoconf
 BuildRequires:	expat-devel
