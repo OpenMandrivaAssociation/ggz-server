@@ -1,5 +1,5 @@
 %define version 0.0.14.1
-%define release %mkrel 2
+%define release %mkrel 3
 
 %define lib_major 6
 %define libname %mklibname ggzdmod %{lib_major}
@@ -50,7 +50,7 @@ are packaged with GGZ:
 # Main package
 %package -n	%{libname}
 Summary:	GGZ server libraries
-Group:		Games/Other
+Group:		System/Libraries
 Provides:	%{libname_basic} = %{version}
 
 %description -n	%{libname}
