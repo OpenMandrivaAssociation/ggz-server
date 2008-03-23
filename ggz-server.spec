@@ -1,5 +1,5 @@
 %define version 0.0.14.1
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define lib_major 6
 %define libname %mklibname ggzdmod %{lib_major}
@@ -70,7 +70,7 @@ This package provides the libraries needed to run the server.
 # Devel package
 %package	devel
 Summary:	GGZ server development libraries
-Group:		Games/Other
+Group:		Development/C
 Provides:	%{libname_basic}-devel = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%libname = %{version}
