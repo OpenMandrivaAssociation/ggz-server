@@ -1,5 +1,5 @@
 %define version 0.0.14.1
-%define release %mkrel 3
+%define release %mkrel 4
 
 %define lib_major 6
 %define libname %mklibname ggzdmod %{lib_major}
