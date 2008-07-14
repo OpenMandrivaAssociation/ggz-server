@@ -1,5 +1,5 @@
 %define version 0.0.14.1
-%define release %mkrel 4
+%define release %mkrel 5
 
 %define lib_major 6
 %define libname %mklibname ggzdmod %{lib_major}
@@ -18,6 +18,8 @@ Release:	%{release}
 License:	GPL
 Group:		Games/Other
 Source:		%name-%version.tar.bz2
+Patch0:		ggz-server-gcc43.diff
+Patch1:		ggz-server-linkage_fix.diff
 URL:		http://www.ggzgamingzone.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libggz-devel = %{version}
@@ -97,8 +99,10 @@ exit 1
 %endif
 
 %setup -q
+%patch0 -p0
+%patch1 -p0
 
-autoconf
+autoreconf -fis
 
 %build
 %serverbuild
