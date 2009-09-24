@@ -22,6 +22,7 @@ Patch0:		ggz-server-gcc43.diff
 Patch1:		ggz-server-linkage_fix.diff
 Patch2:		ggz_server_inotify.patch
 Patch3:		ggz-server_wformat.patch
+Patch4:		ggz-server-0.0.14.1-cstdio.patch
 URL:		http://www.ggzgamingzone.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libggz-devel = %{version}
@@ -105,6 +106,7 @@ exit 1
 %patch1 -p0
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 autoreconf -fis
 
