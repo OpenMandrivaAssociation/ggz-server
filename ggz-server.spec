@@ -1,5 +1,5 @@
 %define version 0.0.14.1
-%define release %mkrel 8
+%define release %mkrel 9
 
 %define lib_major 6
 %define libname %mklibname ggzdmod %{lib_major}
@@ -23,6 +23,7 @@ Patch1:		ggz-server-linkage_fix.diff
 Patch2:		ggz_server_inotify.patch
 Patch3:		ggz-server_wformat.patch
 Patch4:		ggz-server-0.0.14.1-cstdio.patch
+Patch5:		ggz-server-0.0.14.1-gcc46.patch
 URL:		http://www.ggzgamingzone.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libggz-devel = %{version}
@@ -34,7 +35,7 @@ BuildRequires:	mysql-devel
 %if %enable_pgsql
 BuildRequires:	postgresql-devel
 %else
-BuildRequires:	db4-devel
+BuildRequires:	db-devel
 %endif
 %endif
 Requires:	libggz = %{version}
@@ -107,12 +108,13 @@ exit 1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p0
 
-autoreconf -fis
+autoreconf -fi
 
 %build
 %serverbuild
-%configure \
+%configure2_5x \
 	--with-libggz-libraries=%{_libdir} \
 %if %enable_mysql
 	--with-database=mysql
