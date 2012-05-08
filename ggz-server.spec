@@ -114,6 +114,8 @@ autoreconf -fi
 
 %build
 %serverbuild
+
+export LDFLAGS=-lpthread
 %configure2_5x \
 	--with-libggz-libraries=%{_libdir} \
 %if %enable_mysql
