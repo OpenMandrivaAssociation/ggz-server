@@ -164,9 +164,7 @@ rm -rf %{buildroot}
 %doc ChangeLog
 %{_includedir}/*
 %{_libdir}/libggzdmod++.a
-%{_libdir}/libggzdmod++.la
 %{_libdir}/libggzdmod.a
-%{_libdir}/libggzdmod.la
 %{_libdir}/libggzdmod++.so
 %{_libdir}/libggzdmod.so
 
