@@ -1,0 +1,33 @@
+diff -p -up ggz-server-0.0.14.1/game_servers/geekgame/main.cpp.cstdio ggz-server-0.0.14.1/game_servers/geekgame/main.cpp
+--- ggz-server-0.0.14.1/game_servers/geekgame/main.cpp.cstdio	2008-01-05 20:03:01.000000000 +0100
++++ ggz-server-0.0.14.1/game_servers/geekgame/main.cpp	2009-09-24 20:04:04.000000000 +0200
+@@ -21,6 +21,7 @@
+ // System includes
+ #include <iostream>
+ #include <getopt.h>
++#include <cstdio>
+ #include <cstdlib>
+ #include <ctime>
+ 
+diff -p -up ggz-server-0.0.14.1/game_servers/muehle/main.cpp.cstdio ggz-server-0.0.14.1/game_servers/muehle/main.cpp
+--- ggz-server-0.0.14.1/game_servers/muehle/main.cpp.cstdio	2008-01-05 20:02:55.000000000 +0100
++++ ggz-server-0.0.14.1/game_servers/muehle/main.cpp	2009-09-24 20:02:14.000000000 +0200
+@@ -21,6 +21,7 @@
+ // System includes
+ #include <iostream>
+ #include <getopt.h>
++#include <cstdio>
+ #include <cstdlib>
+ 
+ // Version information
+diff -p -up ggz-server-0.0.14.1/game_servers/widelands/main.cpp.cstdio ggz-server-0.0.14.1/game_servers/widelands/main.cpp
+--- ggz-server-0.0.14.1/game_servers/widelands/main.cpp.cstdio	2008-01-05 20:03:02.000000000 +0100
++++ ggz-server-0.0.14.1/game_servers/widelands/main.cpp	2009-09-24 20:04:31.000000000 +0200
+@@ -21,6 +21,7 @@
+ // System includes
+ #include <iostream>
+ #include <getopt.h>
++#include <cstdio>
+ #include <cstdlib>
+ #include <ctime>
+ 

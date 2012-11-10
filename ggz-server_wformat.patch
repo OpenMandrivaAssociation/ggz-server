@@ -1,0 +1,116 @@
+---
+ game_servers/ggzcards/games/bridge.c |    2 	1 +	1 -	0 !
+ game_servers/ggzcards/games/euchre.c |    4 	2 +	2 -	0 !
+ ggzd/login.c                         |    2 	1 +	1 -	0 !
+ ggzd/net.c                           |    2 	1 +	1 -	0 !
+ ggzd/players.c                       |    6 	3 +	3 -	0 !
+ ggzd/stats.c                         |    4 	2 +	2 -	0 !
+ 6 files changed, 10 insertions(+), 10 deletions(-)
+
+Index: ggz-server-0.0.14.1/ggzd/players.c
+===================================================================
+--- ggz-server-0.0.14.1.orig/ggzd/players.c	2009-07-24 10:55:54.000000000 -0400
++++ ggz-server-0.0.14.1/ggzd/players.c	2009-07-24 10:55:56.000000000 -0400
+@@ -971,7 +971,7 @@ GGZPlayerHandlerStatus player_table_info
+ 
+ 	for (i = first; i < last; i++) {
+ 		if (table->seat_types[i] == GGZ_SEAT_PLAYER) {
+-			snprintf(entry.handle, sizeof(entry.handle), player->name);
++			snprintf(entry.handle, sizeof(entry.handle), "%s", player->name);
+ 			status = ggzdb_player_get(&entry);
+ 
+ 			do_send = 1;
+@@ -982,7 +982,7 @@ GGZPlayerHandlerStatus player_table_info
+ 			if (status == GGZDB_NO_ERROR) {
+ 				realname = ggz_strdup(entry.name);
+ 
+-				snprintf(extentry.handle, sizeof(extentry.handle), player->name);
++				snprintf(extentry.handle, sizeof(extentry.handle), "%s", player->name);
+ 				status = ggzdb_player_get_extended(&extentry);
+ 				if (status == GGZDB_NO_ERROR) {
+ 					photo = ggz_strdup(extentry.photo);
+@@ -1552,7 +1552,7 @@ GGZPlayerHandlerStatus player_perms_admi
+ 	if (ggz_perms_is_set(rcvr->perms, perm) != set) {
+ 		ggzdbPlayerEntry entry;
+ 
+-		snprintf(entry.handle, sizeof(entry.handle), rcvr->name);
++		snprintf(entry.handle, sizeof(entry.handle), "%s", rcvr->name);
+ 		if (ggzdb_player_get(&entry) != GGZDB_NO_ERROR) {
+ 			pthread_rwlock_unlock(&rcvr->lock);
+ 			if (net_send_admin_result(player->client->net,
+Index: ggz-server-0.0.14.1/ggzd/net.c
+===================================================================
+--- ggz-server-0.0.14.1.orig/ggzd/net.c	2008-02-14 14:23:53.000000000 -0500
++++ ggz-server-0.0.14.1/ggzd/net.c	2009-07-24 10:57:37.000000000 -0400
+@@ -370,7 +370,7 @@ GGZReturn net_send_motd(GGZNetIO *net)
+ 		
+ 	for (i = 0; i < num; i++) {
+ 		line = motd_get_line(i);
+-		_net_send_line(net, line);
++		_net_send_line(net, "%s", line);
+ 		ggz_free(line);
+ 	}
+ 
+Index: ggz-server-0.0.14.1/ggzd/stats.c
+===================================================================
+--- ggz-server-0.0.14.1.orig/ggzd/stats.c	2008-01-05 14:03:09.000000000 -0500
++++ ggz-server-0.0.14.1/ggzd/stats.c	2009-07-24 11:00:26.000000000 -0400
+@@ -265,7 +265,7 @@ void report_statistics(int room, int gam
+ 		}
+ 
+ 		snprintf(player.handle, sizeof(player.handle),
+-			 report->names[i]);
++			 "%s", report->names[i]);
+ 
+ 		/* Find out player type */
+ 		if (report->types[i] == GGZ_SEAT_BOT) {
+@@ -307,7 +307,7 @@ void report_statistics(int room, int gam
+ 
+ 		if (report->types[i] == GGZ_SEAT_PLAYER) {
+ 			snprintf(stats[i].player, sizeof(stats[i].player),
+-				 report->names[i]);
++				 "%s", report->names[i]);
+ 		} else if (report->types[i] == GGZ_SEAT_BOT) {
+ 			if(!ggz_strcmp(report->names[i], "AI")) {
+ 				snprintf(stats[i].player, sizeof(stats[i].player),
+Index: ggz-server-0.0.14.1/ggzd/login.c
+===================================================================
+--- ggz-server-0.0.14.1.orig/ggzd/login.c	2008-01-05 14:03:09.000000000 -0500
++++ ggz-server-0.0.14.1/ggzd/login.c	2009-07-24 11:02:54.000000000 -0400
+@@ -74,7 +74,7 @@ GGZPlayerHandlerStatus login_player(GGZL
+ 
+ 	new_pw[0] = '\0';
+ 	if(password)
+-		snprintf(new_pw, sizeof(new_pw), password);
++		snprintf(new_pw, sizeof(new_pw), "%s", password);
+ 
+ 	dbg_msg(GGZ_DBG_CONNECTION, "Player %p attempting login as %d",
+ 	        player, type);
+Index: ggz-server-0.0.14.1/game_servers/ggzcards/games/bridge.c
+===================================================================
+--- ggz-server-0.0.14.1.orig/game_servers/ggzcards/games/bridge.c	2008-01-05 14:02:58.000000000 -0500
++++ ggz-server-0.0.14.1/game_servers/ggzcards/games/bridge.c	2009-07-24 11:07:32.000000000 -0400
+@@ -585,7 +585,7 @@ static void bridge_end_hand(void)
+ 	/* TODO: vulnerable, etc. */
+ 
+ 	set_global_message("", "%s", buf);
+-	set_global_message("Hand Score", buf2);
++	set_global_message("Hand Score", "%s", buf2);
+ 	bridge_set_score_message();
+ 
+ 	BRIDGE.declarer = BRIDGE.dummy = -1;
+Index: ggz-server-0.0.14.1/game_servers/ggzcards/games/euchre.c
+===================================================================
+--- ggz-server-0.0.14.1.orig/game_servers/ggzcards/games/euchre.c	2008-01-05 14:02:58.000000000 -0500
++++ ggz-server-0.0.14.1/game_servers/ggzcards/games/euchre.c	2009-07-24 11:13:12.000000000 -0400
+@@ -443,8 +443,8 @@ static void euchre_end_hand(void)
+ 
+ 	snprintf(buf, sizeof(buf), msg, tricks, value);
+ 	/* This message is quickly overwritten by the up-card message.  Ugh. */
+-	set_global_message("", buf);
+-	set_global_message("Scoring History", buf);	/* FIXME: this should 
++	set_global_message("", "%s", buf);
++	set_global_message("Scoring History", "%s", buf);	/* FIXME: this should 
+ 							   be added to the
+ 							   history, not
+ 							   overwrite it. */

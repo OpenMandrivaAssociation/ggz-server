@@ -1,0 +1,11 @@
+--- game_servers/spades/Makefile.am	2008-01-05 20:02:54.000000000 +0100
++++ game_servers/spades/Makefile.am.oden	2008-07-14 17:38:05.000000000 +0200
+@@ -21,7 +21,7 @@
+ 		      socketfunc.c \
+ 		      socketfunc.h
+ 
+-ggzd_spades_LDADD = $(LDADD) $(top_builddir)/ggzdmod/libggzdmod.la
++ggzd_spades_LDADD = $(LDADD) $(top_builddir)/ggzdmod/libggzdmod.la $(LIB_GGZ)
+ 
+ AM_CPPFLAGS = $(LIBGGZ_INCLUDES)
+ 

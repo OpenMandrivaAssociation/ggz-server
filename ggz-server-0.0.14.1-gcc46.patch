@@ -1,0 +1,10 @@
+--- game_servers/muehle/qtserv/qlist.h.gcc	2011-04-11 10:07:48.000000000 +0200
++++ game_servers/muehle/qtserv/qlist.h	2011-04-11 10:09:21.000000000 +0200
+@@ -2,6 +2,7 @@
+ #define QLIST_H
+ 
+ #include <list>
++#include <cstddef>
+ 
+ template<class T> class QList : public std::list<T>
+ {
