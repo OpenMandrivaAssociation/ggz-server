@@ -13,7 +13,7 @@
 Summary:	Server software for the GGZ Gaming Zone
 Name:		ggz-server
 Version:	0.0.14.1
-Release:	16
+Release:	17
 License:	GPLv2
 Group:		Games/Other
 Url:		http://www.ggzgamingzone.org/
