@@ -13,7 +13,7 @@
 Summary:	Server software for the GGZ Gaming Zone
 Name:		ggz-server
 Version:	0.0.14.1
-Release:	17
+Release:	18
 License:	GPLv2
 Group:		Games/Other
 Url:		http://www.ggzgamingzone.org/
@@ -68,10 +68,10 @@ This package provides the libraries needed to run the server.
 %package -n	%{devname}
 Summary:	GGZ server development libraries
 Group:		Development/C
-Provides:	%{name}-devel = %{version}-%{release}
+Provides:	%{name}-devel = %{EVRD}
 Obsoletes:	%{name}-devel < 0.0.14.1-12
-Requires:	%{libname} = %{version}-%{release}
-Requires:	%{libnamepp} = %{version}-%{release}
+Requires:	%{libname} = %{EVRD}
+Requires:	%{libnamepp} = %{EVRD}
 
 %description -n	%{devname}
 This package provides all development related files necessary for you to
