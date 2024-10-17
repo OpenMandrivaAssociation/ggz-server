@@ -16,7 +16,7 @@ Version:	0.0.14.1
 Release:	18
 License:	GPLv2
 Group:		Games/Other
-Url:		http://www.ggzgamingzone.org/
+Url:		https://www.ggzgamingzone.org/
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		ggz-server-gcc43.diff
 Patch1:		ggz-server-linkage_fix.diff
