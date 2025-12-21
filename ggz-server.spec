@@ -25,6 +25,11 @@ Patch3:		ggz-server_wformat.patch
 Patch4:		ggz-server-0.0.14.1-cstdio.patch
 Patch5:		ggz-server-0.0.14.1-gcc46.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libggz-devel = %{version}
 BuildRequires:	pkgconfig(popt)
 BuildRequires:	pkgconfig(expat)
